@@ -1,0 +1,4 @@
+*.swp
+test_run_dir
+out/*
+build/*
