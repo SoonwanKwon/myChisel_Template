@@ -107,12 +107,12 @@ trait HasRocketModule extends ScalaModule {
 }
 
 object myModule extends Cross[MyModule]("chisel","chisel3")
-//trait MyModule extends HasRocketModule with HasChisel {
-trait MyModule extends HasChisel {
+trait MyModule extends HasRocketModule with HasChisel {
+//trait MyModule extends HasChisel {
 
 	override def millSourcePath = os.pwd
 
-	//def rocketModule = rocketchip(crossValue)
+	def rocketModule = rocketchip(crossValue)
 
 	override def forkArgs = Seq("-Xmx8G", "-Xss256m")
 

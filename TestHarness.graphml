@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:y="http://www.yworks.com/xml/graphml">
+  <key for="node" id="n" yfiles.type="nodegraphics"/>
+  <key for="edge" id="e" yfiles.type="edgegraphics"/>
+  <key for="node" id="d" attr.name="Description" attr.type="string"/>
+  <graph id="G" edgedefault="directed">
+    <node id="1">
+      <data key="n"><y:ShapeNode><y:NodeLabel modelName="sides" modelPosition="w" rotationAngle="270.0">ldut</y:NodeLabel><y:BorderStyle type="line"/></y:ShapeNode></data>
+      <data key="d">core_complex (CoreComplexTestHarness.ldut)</data>
+      <graph id="1::" edgedefault="directed">
+        <node id="7">
+          <data key="n"><y:ShapeNode><y:NodeLabel modelName="sides" modelPosition="w" rotationAngle="270.0">ifu</y:NodeLabel><y:BorderStyle type="line"/></y:ShapeNode></data>
+          <data key="d">ifu (CoreComplexTestHarness.ldut.ifu)</data>
+          <graph id="7::" edgedefault="directed">
+            <node id="7::0">
+              <data key="n"><y:ShapeNode><y:Shape type="ellipse"/><y:Fill color="#FFCC00" transparent="false"/></y:ShapeNode></data>
+              <data key="d">On Output Edge:
+
+Master Name = ifu
+visibility = List(AddressSet(0x0, ~0x0))
+emits = acquireT = TransferSizes[1, 4096]
+acquireB = TransferSizes[1, 4096]
+arithmetic = TransferSizes[1, 4096]
+logical = TransferSizes[1, 4096]
+get = TransferSizes[1, 4096]
+putFull = TransferSizes[1, 4096]
+putPartial = TransferSizes[1, 4096]
+hint = TransferSizes[1, 4096]
+
+
+sourceId = IdRange(0,1)
+
+
+Slave Port Beatbytes = 4
+Slave Port MinLatency = 1
+
+Slave Name = memory
+Slave Address = List(AddressSet(0x0, 0xbff))
+supports = acquireT = TransferSizes[0, 0]
+acquireB = TransferSizes[0, 0]
+arithmetic = TransferSizes[0, 0]
+logical = TransferSizes[0, 0]
+get = TransferSizes[1, 256]
+putFull = TransferSizes[1, 256]
+putPartial = TransferSizes[1, 256]
+hint = TransferSizes[0, 0]
+
+
+
+
+---------------------------------------------
+
+, 
+</data>
+            </node>
+          </graph>
+        </node>
+        <node id="6">
+          <data key="n"><y:ShapeNode><y:NodeLabel modelName="sides" modelPosition="w" rotationAngle="270.0">pusher1</y:NodeLabel><y:BorderStyle type="line"/></y:ShapeNode></data>
+          <data key="d">TLPatternPusher (CoreComplexTestHarness.ldut.pusher1)</data>
+          <graph id="6::" edgedefault="directed">
+            <node id="6::0">
+              <data key="n"><y:ShapeNode><y:Shape type="ellipse"/><y:Fill color="#FFCC00" transparent="false"/></y:ShapeNode></data>
+              <data key="d">On Output Edge:
+
+Master Name = pat1
+visibility = List(AddressSet(0x0, ~0x0))
+emits = acquireT = TransferSizes[1, 4096]
+acquireB = TransferSizes[1, 4096]
+arithmetic = TransferSizes[1, 4096]
+logical = TransferSizes[1, 4096]
+get = TransferSizes[1, 4096]
+putFull = TransferSizes[1, 4096]
+putPartial = TransferSizes[1, 4096]
+hint = TransferSizes[1, 4096]
+
+
+sourceId = IdRange(0,1)
+
+
+Slave Port Beatbytes = 4
+Slave Port MinLatency = 1
+
+Slave Name = memory
+Slave Address = List(AddressSet(0x0, 0xbff))
+supports = acquireT = TransferSizes[0, 0]
+acquireB = TransferSizes[0, 0]
+arithmetic = TransferSizes[0, 0]
+logical = TransferSizes[0, 0]
+get = TransferSizes[1, 256]
+putFull = TransferSizes[1, 256]
+putPartial = TransferSizes[1, 256]
+hint = TransferSizes[0, 0]
+
+
+
+
+---------------------------------------------
+
+, 
+</data>
+            </node>
+          </graph>
+        </node>
+        <node id="5">
+          <data key="n"><y:ShapeNode><y:NodeLabel modelName="sides" modelPosition="w" rotationAngle="270.0">delayer</y:NodeLabel><y:BorderStyle type="line"/></y:ShapeNode></data>
+          <data key="d">TLDelayer (CoreComplexTestHarness.ldut.delayer)</data>
+          <graph id="5::" edgedefault="directed">
+            <node id="5::0">
+              <data key="n"><y:ShapeNode><y:Shape type="ellipse"/><y:Fill color="#FFCC00" transparent="false"/></y:ShapeNode></data>
+              <data key="d">On Output Edge:
+
+Master Name = pat1
+visibility = List(AddressSet(0x0, ~0x0))
+emits = acquireT = TransferSizes[1, 4096]
+acquireB = TransferSizes[1, 4096]
+arithmetic = TransferSizes[1, 4096]
+logical = TransferSizes[1, 4096]
+get = TransferSizes[1, 4096]
+putFull = TransferSizes[1, 4096]
+putPartial = TransferSizes[1, 4096]
+hint = TransferSizes[1, 4096]
+
+
+sourceId = IdRange(1,2)
+
+Master Name = ifu
+visibility = List(AddressSet(0x0, ~0x0))
+emits = acquireT = TransferSizes[1, 4096]
+acquireB = TransferSizes[1, 4096]
+arithmetic = TransferSizes[1, 4096]
+logical = TransferSizes[1, 4096]
+get = TransferSizes[1, 4096]
+putFull = TransferSizes[1, 4096]
+putPartial = TransferSizes[1, 4096]
+hint = TransferSizes[1, 4096]
+
+
+sourceId = IdRange(0,1)
+
+
+Slave Port Beatbytes = 4
+Slave Port MinLatency = 1
+
+Slave Name = memory
+Slave Address = List(AddressSet(0x0, 0xbff))
+supports = acquireT = TransferSizes[0, 0]
+acquireB = TransferSizes[0, 0]
+arithmetic = TransferSizes[0, 0]
+logical = TransferSizes[0, 0]
+get = TransferSizes[1, 256]
+putFull = TransferSizes[1, 256]
+putPartial = TransferSizes[1, 256]
+hint = TransferSizes[0, 0]
+
+
+
+
+---------------------------------------------
+
+On Input Edge:
+
+Master Name = pat1
+visibility = List(AddressSet(0x0, ~0x0))
+emits = acquireT = TransferSizes[1, 4096]
+acquireB = TransferSizes[1, 4096]
+arithmetic = TransferSizes[1, 4096]
+logical = TransferSizes[1, 4096]
+get = TransferSizes[1, 4096]
+putFull = TransferSizes[1, 4096]
+putPartial = TransferSizes[1, 4096]
+hint = TransferSizes[1, 4096]
+
+
+sourceId = IdRange(1,2)
+
+Master Name = ifu
+visibility = List(AddressSet(0x0, ~0x0))
+emits = acquireT = TransferSizes[1, 4096]
+acquireB = TransferSizes[1, 4096]
+arithmetic = TransferSizes[1, 4096]
+logical = TransferSizes[1, 4096]
+get = TransferSizes[1, 4096]
+putFull = TransferSizes[1, 4096]
+putPartial = TransferSizes[1, 4096]
+hint = TransferSizes[1, 4096]
+
+
+sourceId = IdRange(0,1)
+
+
+Slave Port Beatbytes = 4
+Slave Port MinLatency = 1
+
+Slave Name = memory
+Slave Address = List(AddressSet(0x0, 0xbff))
+supports = acquireT = TransferSizes[0, 0]
+acquireB = TransferSizes[0, 0]
+arithmetic = TransferSizes[0, 0]
+logical = TransferSizes[0, 0]
+get = TransferSizes[1, 256]
+putFull = TransferSizes[1, 256]
+putPartial = TransferSizes[1, 256]
+hint = TransferSizes[0, 0]
+
+
+
+, 
+</data>
+            </node>
+          </graph>
+        </node>
+        <node id="4">
+          <data key="n"><y:ShapeNode><y:NodeLabel modelName="sides" modelPosition="w" rotationAngle="270.0">fragmenter</y:NodeLabel><y:BorderStyle type="line"/></y:ShapeNode></data>
+          <data key="d">TLFragmenter (CoreComplexTestHarness.ldut.fragmenter)</data>
+          <graph id="4::" edgedefault="directed">
+            <node id="4::0">
+              <data key="n"><y:ShapeNode><y:Shape type="ellipse"/><y:Fill color="#FFCC00" transparent="false"/></y:ShapeNode></data>
+              <data key="d">On Output Edge:
+
+Master Name = TLFragmenter
+visibility = List(AddressSet(0x0, ~0x0))
+emits = acquireT = TransferSizes[1, 4096]
+acquireB = TransferSizes[1, 4096]
+arithmetic = TransferSizes[1, 4096]
+logical = TransferSizes[1, 4096]
+get = TransferSizes[1, 4096]
+putFull = TransferSizes[1, 4096]
+putPartial = TransferSizes[1, 4096]
+hint = TransferSizes[1, 4096]
+
+
+sourceId = IdRange(0,256)
+
+
+Slave Port Beatbytes = 4
+Slave Port MinLatency = 1
+
+Slave Name = memory
+Slave Address = List(AddressSet(0x0, 0xbff))
+supports = acquireT = TransferSizes[0, 0]
+acquireB = TransferSizes[0, 0]
+arithmetic = TransferSizes[0, 0]
+logical = TransferSizes[0, 0]
+get = TransferSizes[1, 4]
+putFull = TransferSizes[1, 4]
+putPartial = TransferSizes[1, 4]
+hint = TransferSizes[0, 0]
+
+
+
+
+---------------------------------------------
+
+On Input Edge:
+
+Master Name = pat1
+visibility = List(AddressSet(0x0, ~0x0))
+emits = acquireT = TransferSizes[1, 4096]
+acquireB = TransferSizes[1, 4096]
+arithmetic = TransferSizes[1, 4096]
+logical = TransferSizes[1, 4096]
+get = TransferSizes[1, 4096]
+putFull = TransferSizes[1, 4096]
+putPartial = TransferSizes[1, 4096]
+hint = TransferSizes[1, 4096]
+
+
+sourceId = IdRange(1,2)
+
+Master Name = ifu
+visibility = List(AddressSet(0x0, ~0x0))
+emits = acquireT = TransferSizes[1, 4096]
+acquireB = TransferSizes[1, 4096]
+arithmetic = TransferSizes[1, 4096]
+logical = TransferSizes[1, 4096]
+get = TransferSizes[1, 4096]
+putFull = TransferSizes[1, 4096]
+putPartial = TransferSizes[1, 4096]
+hint = TransferSizes[1, 4096]
+
+
+sourceId = IdRange(0,1)
+
+
+Slave Port Beatbytes = 4
+Slave Port MinLatency = 1
+
+Slave Name = memory
+Slave Address = List(AddressSet(0x0, 0xbff))
+supports = acquireT = TransferSizes[0, 0]
+acquireB = TransferSizes[0, 0]
+arithmetic = TransferSizes[0, 0]
+logical = TransferSizes[0, 0]
+get = TransferSizes[1, 256]
+putFull = TransferSizes[1, 256]
+putPartial = TransferSizes[1, 256]
+hint = TransferSizes[0, 0]
+
+
+
+, 
+</data>
+            </node>
+          </graph>
+        </node>
+        <node id="3">
+          <data key="n"><y:ShapeNode><y:NodeLabel modelName="sides" modelPosition="w" rotationAngle="270.0">memory</y:NodeLabel><y:BorderStyle type="line"/></y:ShapeNode></data>
+          <data key="d">TLRAM (CoreComplexTestHarness.ldut.memory)</data>
+          <graph id="3::" edgedefault="directed">
+            <node id="3::0">
+              <data key="n"><y:ShapeNode><y:Shape type="ellipse"/><y:Fill color="#FFCC00" transparent="false"/></y:ShapeNode></data>
+              <data key="d">
+---------------------------------------------
+
+On Input Edge:
+
+Master Name = TLFragmenter
+visibility = List(AddressSet(0x0, ~0x0))
+emits = acquireT = TransferSizes[1, 4096]
+acquireB = TransferSizes[1, 4096]
+arithmetic = TransferSizes[1, 4096]
+logical = TransferSizes[1, 4096]
+get = TransferSizes[1, 4096]
+putFull = TransferSizes[1, 4096]
+putPartial = TransferSizes[1, 4096]
+hint = TransferSizes[1, 4096]
+
+
+sourceId = IdRange(0,256)
+
+
+Slave Port Beatbytes = 4
+Slave Port MinLatency = 1
+
+Slave Name = memory
+Slave Address = List(AddressSet(0x0, 0xbff))
+supports = acquireT = TransferSizes[0, 0]
+acquireB = TransferSizes[0, 0]
+arithmetic = TransferSizes[0, 0]
+logical = TransferSizes[0, 0]
+get = TransferSizes[1, 4]
+putFull = TransferSizes[1, 4]
+putPartial = TransferSizes[1, 4]
+hint = TransferSizes[0, 0]
+
+
+
+, 
+</data>
+            </node>
+          </graph>
+        </node>
+        <node id="2">
+          <data key="n"><y:ShapeNode><y:NodeLabel modelName="sides" modelPosition="w" rotationAngle="270.0">xbar</y:NodeLabel><y:BorderStyle type="line"/></y:ShapeNode></data>
+          <data key="d">TLXbar (CoreComplexTestHarness.ldut.xbar)</data>
+          <graph id="2::" edgedefault="directed">
+            <node id="2::0">
+              <data key="n"><y:ShapeNode><y:Shape type="ellipse"/><y:Fill color="#FFCC00" transparent="false"/></y:ShapeNode></data>
+              <data key="d">On Output Edge:
+
+Master Name = pat1
+visibility = List(AddressSet(0x0, ~0x0))
+emits = acquireT = TransferSizes[1, 4096]
+acquireB = TransferSizes[1, 4096]
+arithmetic = TransferSizes[1, 4096]
+logical = TransferSizes[1, 4096]
+get = TransferSizes[1, 4096]
+putFull = TransferSizes[1, 4096]
+putPartial = TransferSizes[1, 4096]
+hint = TransferSizes[1, 4096]
+
+
+sourceId = IdRange(1,2)
+
+Master Name = ifu
+visibility = List(AddressSet(0x0, ~0x0))
+emits = acquireT = TransferSizes[1, 4096]
+acquireB = TransferSizes[1, 4096]
+arithmetic = TransferSizes[1, 4096]
+logical = TransferSizes[1, 4096]
+get = TransferSizes[1, 4096]
+putFull = TransferSizes[1, 4096]
+putPartial = TransferSizes[1, 4096]
+hint = TransferSizes[1, 4096]
+
+
+sourceId = IdRange(0,1)
+
+
+Slave Port Beatbytes = 4
+Slave Port MinLatency = 1
+
+Slave Name = memory
+Slave Address = List(AddressSet(0x0, 0xbff))
+supports = acquireT = TransferSizes[0, 0]
+acquireB = TransferSizes[0, 0]
+arithmetic = TransferSizes[0, 0]
+logical = TransferSizes[0, 0]
+get = TransferSizes[1, 256]
+putFull = TransferSizes[1, 256]
+putPartial = TransferSizes[1, 256]
+hint = TransferSizes[0, 0]
+
+
+
+
+---------------------------------------------
+
+On Input Edge:
+
+Master Name = pat1
+visibility = List(AddressSet(0x0, ~0x0))
+emits = acquireT = TransferSizes[1, 4096]
+acquireB = TransferSizes[1, 4096]
+arithmetic = TransferSizes[1, 4096]
+logical = TransferSizes[1, 4096]
+get = TransferSizes[1, 4096]
+putFull = TransferSizes[1, 4096]
+putPartial = TransferSizes[1, 4096]
+hint = TransferSizes[1, 4096]
+
+
+sourceId = IdRange(0,1)
+
+
+Slave Port Beatbytes = 4
+Slave Port MinLatency = 1
+
+Slave Name = memory
+Slave Address = List(AddressSet(0x0, 0xbff))
+supports = acquireT = TransferSizes[0, 0]
+acquireB = TransferSizes[0, 0]
+arithmetic = TransferSizes[0, 0]
+logical = TransferSizes[0, 0]
+get = TransferSizes[1, 256]
+putFull = TransferSizes[1, 256]
+putPartial = TransferSizes[1, 256]
+hint = TransferSizes[0, 0]
+
+
+
+On Input Edge:
+
+Master Name = ifu
+visibility = List(AddressSet(0x0, ~0x0))
+emits = acquireT = TransferSizes[1, 4096]
+acquireB = TransferSizes[1, 4096]
+arithmetic = TransferSizes[1, 4096]
+logical = TransferSizes[1, 4096]
+get = TransferSizes[1, 4096]
+putFull = TransferSizes[1, 4096]
+putPartial = TransferSizes[1, 4096]
+hint = TransferSizes[1, 4096]
+
+
+sourceId = IdRange(0,1)
+
+
+Slave Port Beatbytes = 4
+Slave Port MinLatency = 1
+
+Slave Name = memory
+Slave Address = List(AddressSet(0x0, 0xbff))
+supports = acquireT = TransferSizes[0, 0]
+acquireB = TransferSizes[0, 0]
+arithmetic = TransferSizes[0, 0]
+logical = TransferSizes[0, 0]
+get = TransferSizes[1, 256]
+putFull = TransferSizes[1, 256]
+putPartial = TransferSizes[1, 256]
+hint = TransferSizes[0, 0]
+
+
+
+, 
+</data>
+            </node>
+          </graph>
+        </node>
+      </graph>
+    </node>
+    <edge source="7::0" target="2::0"><data key="e"><y:PolyLineEdge><y:Arrows source="none" target="standard"/><y:LineStyle color="#000000" type="line" width="1.0"/><y:EdgeLabel modelName="centered" rotationAngle="270.0">32</y:EdgeLabel></y:PolyLineEdge></data></edge>
+    <edge source="6::0" target="2::0"><data key="e"><y:PolyLineEdge><y:Arrows source="none" target="standard"/><y:LineStyle color="#000000" type="line" width="1.0"/><y:EdgeLabel modelName="centered" rotationAngle="270.0">32</y:EdgeLabel></y:PolyLineEdge></data></edge>
+    <edge source="5::0" target="4::0"><data key="e"><y:PolyLineEdge><y:Arrows source="none" target="standard"/><y:LineStyle color="#000000" type="line" width="1.0"/><y:EdgeLabel modelName="centered" rotationAngle="270.0">32</y:EdgeLabel></y:PolyLineEdge></data></edge>
+    <edge source="4::0" target="3::0"><data key="e"><y:PolyLineEdge><y:Arrows source="none" target="standard"/><y:LineStyle color="#000000" type="line" width="1.0"/><y:EdgeLabel modelName="centered" rotationAngle="270.0">32</y:EdgeLabel></y:PolyLineEdge></data></edge>
+    <edge source="2::0" target="5::0"><data key="e"><y:PolyLineEdge><y:Arrows source="none" target="standard"/><y:LineStyle color="#000000" type="line" width="1.0"/><y:EdgeLabel modelName="centered" rotationAngle="270.0">32</y:EdgeLabel></y:PolyLineEdge></data></edge>
+  </graph>
+</graphml>

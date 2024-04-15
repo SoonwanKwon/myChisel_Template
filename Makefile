@@ -9,10 +9,15 @@ test:
 verilog:
 	$(call git_commit, "generate verilog")
 	mkdir -p $(BUILD_DIR)
-	mill -i $(PRJ)[$(CHISEL_VERSION)].runMain Elaborate --target-dir $(BUILD_DIR)
+	mill -i $(PRJ)[$(CHISEL_VERSION)].runMain core_complex.Generator --target-dir $(BUILD_DIR)
+
+core_complex:
+	$(call git_commit, "generate verilog")
+	mkdir -p $(BUILD_DIR)
+	mill -i $(PRJ)[$(CHISEL_VERSION)].runMain core_complex.Generator --target-dir $(BUILD_DIR)
 
 help:
-	mill -i $(PRJ)[$(CHISEL_VERSION)].runMain Elaborate --help
+	mill -i $(PRJ)[$(CHISEL_VERSION)].runMain adder_config.Generator --help
 
 reformat:
 	mill -i __.reformat
