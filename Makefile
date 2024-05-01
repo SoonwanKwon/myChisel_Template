@@ -1,20 +1,31 @@
 BUILD_DIR = ./build
 
+BASE_DIR=$(abspath ./)
+
+
 PRJ = myModule
 CHISEL_VERSION = chisel3
 
+TEST ?= MyNoCTest00
+
+PKG ?= constellation
+DESIGN ?= NoC
+CONFIG ?= "00"
+
 test:
-	mill -i $(PRJ)[$(CHISEL_VERSION)].test
+	mill -i $(PRJ)[$(CHISEL_VERSION)].test.testOnly $(PKG).$(TEST)
 
 verilog:
 	$(call git_commit, "generate verilog")
 	mkdir -p $(BUILD_DIR)
-	mill -i $(PRJ)[$(CHISEL_VERSION)].runMain core_complex.Generator --target-dir $(BUILD_DIR)
+	mill -i $(PRJ)[$(CHISEL_VERSION)].runMain top.TopMain --config $(CONFIG) --design $(DESIGN)
 
-core_complex:
-	$(call git_commit, "generate verilog")
+add_config:
+	$(call git_commit, "generate add_config")
 	mkdir -p $(BUILD_DIR)
-	mill -i $(PRJ)[$(CHISEL_VERSION)].runMain core_complex.Generator --target-dir $(BUILD_DIR)
+	mill -i $(PRJ)[$(CHISEL_VERSION)].runMain top.TopMain --config $(CONFIG) --design $(DESIGN)
+
+
 
 help:
 	mill -i $(PRJ)[$(CHISEL_VERSION)].runMain adder_config.Generator --help

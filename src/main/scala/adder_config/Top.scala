@@ -9,7 +9,7 @@ case object NumOperands extends Field[Int]
 case object BitWidth extends Field[Int]
 
 /** top-level connector */
-class AdderTestHarness()(implicit p: Parameters) extends LazyModule {
+class AdderTop()(implicit p: Parameters) extends LazyModule {
   val numOperands = p(NumOperands)
   val bitWidth = p(BitWidth)
 
@@ -39,16 +39,19 @@ class AdderTestHarness()(implicit p: Parameters) extends LazyModule {
   override lazy val desiredName = "AdderTestHarness"
 }
 
-class TestHarness()(implicit p: Parameters) extends Module {
-  val io = IO(new Bundle {
-    val success = Output(Bool())
-  })
-
-  val ldut = LazyModule(new AdderTestHarness)
-  val dut = Module(ldut.module)
-  io.success := dut.io.finished
-
-  ElaborationArtefacts.add("graphml", ldut.graphML)
+class AdderTestHarness()(implicit p: Parameters) extends LazyModule {
+  lazy val module = new Impl
+  class Impl extends LazyModuleImp(this) {
+    val io = IO(new Bundle {
+      val success = Output(Bool())
+    })
+  
+    val ldut = LazyModule(new AdderTop)
+    val dut = Module(ldut.module)
+    io.success := dut.io.finished
+  
+    ElaborationArtefacts.add("graphml", ldut.graphML)
+  }
 }
 
 
