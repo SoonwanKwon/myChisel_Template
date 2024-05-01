@@ -1,0 +1,6 @@
+[submodule "rocketchip"]
+	path = rocket-chip
+	url = https://github.com/chipsalliance/rocket-chip.git
+[submodule "constellation"]
+	path = constellation
+	url = https://github.com/ucb-bar/constellation.git
