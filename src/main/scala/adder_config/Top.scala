@@ -15,7 +15,7 @@ class AdderTop()(implicit p: Parameters) extends LazyModule {
 
   val adder = LazyModule(new Adder)
   // 8 will be the downward-traveling widths from our drivers
-  val drivers = Seq.fill(numOperands) { LazyModule(new AdderDriver(width = bitWidth, numOutputs = 2)) }
+  val drivers = Seq.fill(numOperands) { LazyModule(new AdderDriver(width = 4, numOutputs = 2)) }
   // 4 will be the upward-traveling width from our monitor
   val monitor = LazyModule(new AdderMonitor(width = bitWidth, numOperands = numOperands))
 

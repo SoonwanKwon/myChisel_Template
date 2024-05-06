@@ -25,16 +25,16 @@ object Generator {
 
     // 2nd FIRRTL
     import sys.process._
-    val genSV = Seq("/home/kswan7004/chisel/firtool",
+    val genSV = Seq("/home/kswan7004/tools/firtool-1.74.0/bin/firtool",
       "--O=debug",
       "--format=fir",
       "--split-verilog",
       s"--blackbox-path=src/main/resources",
       "--disable-all-randomization",
-      "--emit-chisel-asserts-as-sva",
+//      "--emit-chisel-asserts-as-sva",
       "--add-mux-pragmas",
       "--fixup-eicg-wrapper",
-      "--emit_separate-always-blocks",
+      "--emit-separate-always-blocks",
       "--export-module-hierarchy",
       "--verify-each=true",
       "--preserve-values=all",

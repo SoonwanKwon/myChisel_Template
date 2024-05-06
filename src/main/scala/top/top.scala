@@ -5,6 +5,7 @@ import chisel3.util._
 import freechips.rocketchip.diplomacy._
 import adder_config._
 import core_complex._
+import freenmp._
 import adder_config.SmallConfig
 import java.io.{File, FileWriter}
 import freechips.rocketchip.util.ElaborationArtefacts
@@ -45,6 +46,9 @@ object TopMain extends App {
     case "core_complex"=> {
       LazyModule(new CoreComplexTestHarness()(config))
     }
+	case "nmp" => {
+	  LazyModule(new XBAR()(new MyBaseConfig))
+	}
     case _ => {
       throw new RuntimeException(s"Invalid design name: ${designName}")
     }

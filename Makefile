@@ -6,11 +6,11 @@ BASE_DIR=$(abspath ./)
 PRJ = myModule
 CHISEL_VERSION = chisel3
 
-TEST ?= MyNoCTest00
+TEST ?= XbarTest
 
-PKG ?= constellation
-DESIGN ?= NoC
-CONFIG ?= "00"
+PKG ?= freenmp.test
+DESIGN ?= nmp
+CONFIG ?= 00 
 
 test:
 	mill -i $(PRJ)[$(CHISEL_VERSION)].test.testOnly $(PKG).$(TEST)
@@ -24,8 +24,6 @@ add_config:
 	$(call git_commit, "generate add_config")
 	mkdir -p $(BUILD_DIR)
 	mill -i $(PRJ)[$(CHISEL_VERSION)].runMain top.TopMain --config $(CONFIG) --design $(DESIGN)
-
-
 
 help:
 	mill -i $(PRJ)[$(CHISEL_VERSION)].runMain adder_config.Generator --help
@@ -44,5 +42,9 @@ clean:
 sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	@echo "Write this Makefile by yourself."
+
+#env:
+#    mill mill.bsp.BSP/install
+#    mill mill.idea.GenIdea/idea
 
 -include ../Makefile

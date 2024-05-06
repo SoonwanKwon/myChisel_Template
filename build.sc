@@ -118,11 +118,6 @@ trait	CONSTELLATION extends millbuild.`constellation`.common.constellationModule
 	override def rocketModule = rocketchip(crossValue)
 }
 
-
-
-
-
-
 //////
 
 object myModule extends Cross[MyModule]("chisel","chisel3")
@@ -140,8 +135,9 @@ trait MyModule extends HasChisel {
 		constellationModule,
 	)
 	override def forkArgs = {
+    println(s"DEBUG ${debug}")
 		if(debug == "ON")
-			 Seq("-agentlib:jdwp=transport=dt_socket, server=y, address=8000, suspend=y")
+			 Seq("-agentlib:jdwp=transport=dt_socket,server=y,address=8000,suspend=y")
 		else
 			 Seq("-Xmx8G", "-Xss256m")
 	}
