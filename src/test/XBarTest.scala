@@ -14,8 +14,9 @@ import chiseltest._
 class XbarTest extends NMPBaseTester {
   behavior of "XBAR"
   it should "pass" in {
-    val ldut = LazyModule(new ProcessingElement()(config))
-    test(ldut.module).withAnnotations(Seq(
+    //val ldut = Module(new ProcessingElement()(config))
+    //val ldut = LazyModule(new ProcessingElement()(config))
+    test(new ProcessingElement()(config)).withAnnotations(Seq(
       VerilatorBackendAnnotation,
       VerilatorFlags(Seq("--trace")),
       VerilatorCFlags(Seq("")),

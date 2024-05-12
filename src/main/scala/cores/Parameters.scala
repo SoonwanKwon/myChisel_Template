@@ -31,4 +31,5 @@ trait	HasNMPParameter {
 
 	val nXbarInPE = 3
 	val nVT = 4 // Vertical Traverse
+	val nPEInPG = 8 // Number of PE in PG
 }

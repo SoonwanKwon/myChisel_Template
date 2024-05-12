@@ -6,10 +6,11 @@ import org.chipsalliance.cde.config.Parameters
 import freechips.rocketchip.diplomacy.{LazyModule, LazyModuleImp, NexusNode, RenderedEdge, SimpleNodeImp, SinkNode, SourceNode, ValName}
 import freechips.rocketchip.util._
 
-class XBAR (implicit p: Parameters) extends LazyModule with HasNMPParameter {
+class XBAR (val rows:Int , val cols: Int, val weightBits: Int, val xbarOutBits: Int,
+						val iBitsPerCycle: Int) extends Module {
 
-	lazy val module = new Impl
-	class Impl extends LazyModuleImp(this) {
+	//lazy val module = new Impl
+	//class Impl extends LazyModuleImp(this) {
 		val io = IO(new Bundle {
 			val idata = Input(Vec(rows, UInt(iBitsPerCycle.W)))
 			val cen = Input(Bool()) // Compute Enable
@@ -92,7 +93,7 @@ class XBAR (implicit p: Parameters) extends LazyModule with HasNMPParameter {
 		for(cc <- 0 until rows)
 			ioOut.outData(cc) := oReg(cc)(fullBits-1, fullBits-xbarOutBits).asSInt
 		ioOut.outValid := RegNext(io.cen & ioIn.last)
-	}
+//	}
 }
 
 
@@ -103,7 +104,7 @@ class	NMPTestHarness()(implicit p: Parameters) extends LazyModule {
 			val success = Output(Bool())
 
 		})
-		val ldut = LazyModule(new XBAR()(p))
+//		val ldut = LazyModule(new XBAR()(p))
 
 		val rCnt = RegInit(0.U(8.W))
 		

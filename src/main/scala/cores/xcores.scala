@@ -11,26 +11,26 @@ abstract class nmpBundle(implicit val p: Parameters) extends Bundle
 with HasNMPParameter
 //
 
-class IbufIo extends nmpBundle {
+class IbufIo (implicit p: Parameters) extends nmpBundle {
   val Data = Vec(nVT, UInt((rows*ifmBits).W))
-  val Valid = Vec(nVT, Bool)
-  val isZero  = Vec(nVT,Bool)
+  val Valid = Vec(nVT, Bool())
+  val isZero  = Vec(nVT,Bool())
 }
 
-class Ibuf2PGIo extends nmpBundle {
-  val ifm = Vec(nXbarInPE, Vec(rows, UInt(iBitsPerCycle).W))
+class Ibuf2PGIo (implicit p: Parameters) extends nmpBundle {
+  val ifm = Vec(nXbarInPE, Vec(rows, UInt(iBitsPerCycle.W)))
+  val valid = Vec(nXbarInPE, Bool())
 }
 
 
-class ProcessingElement (implicit p: Parameters) extends LazyModule with HasNMPParameter {
+class ProcessingElement (implicit val p: Parameters) extends Module with HasNMPParameter {
 
-  val xbars  = for (nn <-0 until nXbarInPE) yield {
-    LazyModule(new XBAR())
-  }
+ // lazy val module = new Impl
+  //class Impl  extends LazyModuleImp(this) {
 
-  lazy val module = new Impl
-
-  class Impl  extends LazyModuleImp(this) {
+    val xbars  = for (nn <-0 until nXbarInPE) yield {
+      Module(new XBAR(rows, cols, weightBits, xbarOutBits, iBitsPerCycle))
+    }
     val io = IO(new Bundle {
       val idata = Input(Vec(nXbarInPE,Vec(rows, UInt(iBitsPerCycle.W))))
       val iXbarEn = Input(Vec(nXbarInPE, Bool()))
@@ -55,39 +55,83 @@ class ProcessingElement (implicit p: Parameters) extends LazyModule with HasNMPP
     val outValid = Reg(Bool())
 
     xbars.zipWithIndex.foreach{ case (m, idx) => {
-      m.module.ioIn <> ioIn
-      m.module.ioIn.wen := io.iXbarEn(idx) & ioIn.wen
-      m.module.ioIn.ren := io.iXbarEn(idx)  & ioIn.ren
-      m.module.io.idata := io.idata(idx)
-      m.module.io.cen := io.iXbarEn(idx) & io.cen
+      m.ioIn <> ioIn
+      m.ioIn.wen := io.iXbarEn(idx) & ioIn.wen
+      m.ioIn.ren := io.iXbarEn(idx)  & ioIn.ren
+      m.io.idata := io.idata(idx)
+      m.io.cen := io.iXbarEn(idx) & io.cen
     }}
     for (cc <- 0 until rows)
-      outBuf(cc) := xbars.map(_.module.ioOut.outData(cc)).reduce(_ +& _)
+      outBuf(cc) := xbars.map(_.ioOut.outData(cc)).reduce(_ +& _)
     ioOut.outData := outBuf
-    outValid := xbars.map(_.module.ioOut.outValid).reduce(_ ||_ )
+    outValid := xbars.map(_.ioOut.outValid).reduce(_ ||_ )
     ioOut.outValid := outValid
-  } // end of Impl
+//  } // end of Impl
 
 }
 
-class BufferPG (implicit p: Parameters) extends LazyModule with HasNMPParameter {
-  val io = IO(new Bundle{
-    val in = Input(new IbufIo)
-    val out = Output(new IbufIo)
-    val toPG = Output(new Ibuf2PGIo)
-    val sel = Input(UInt(2.W)) // FixMe
-    val push = Input(Bool)
-  })
+class BufferPG (implicit val p: Parameters) extends Module with HasNMPParameter {
 
-  val nReg = Reg(Vec(nVT, UInt((rows*ifmBits).W)))
+  // no node yet
 
-  (0until nVT).foreach {
-    case (idx) => {
-      when(io.push & io.in.Valid(idx)) {
+//  lazy val module = new Impl
+
+//  class Impl  extends LazyModuleImp(this) {
+
+    val io = IO(new Bundle {
+      val in = Input(new IbufIo)
+      val out = Output(new IbufIo)
+      val toPG = Output(new Ibuf2PGIo)
+      val sel = Input(UInt(2.W)) // FixMe
+      val push = Input(Bool())
+    })
+
+    val nReg = Reg(Vec(nVT, UInt((rows * ifmBits).W)))
+    val validReg = RegInit(VecInit(Seq.fill(nVT)(false.B)))
+
+    (0 until nVT).foreach { idx =>
+      when(io.push) {
         nReg(idx) := io.in.Data(idx)
+        validReg(idx) := io.in.Valid(idx)
       }
     }
-  }
+
+    io.out <> io.in
+
+    // Selection
+    val idxMax = nVT - nXbarInPE
+    (0 until idxMax).foreach(idx =>
+      when(io.sel === idx.U) {
+        for (jj <- 0 until nXbarInPE) {
+          io.toPG.ifm(jj) := nReg(idx + jj)
+          io.toPG.valid(jj) := validReg(idx + jj)
+        }
+      }
+    )
+//  }
+}
+
+class ProcessingGroup (implicit p: Parameters) extends LazyModule with HasNMPParameter {
+
+  lazy val module = new Impl
+
+  class Impl  extends LazyModuleImp(this) {
+
+    val io = IO(new Bundle {
+
+    })
+
+    //
+    val pes = for (i <- 0 until nPEInPG) yield {
+      Module (new ProcessingElement())
+    }
+
+    val ibuf = Module (new BufferPG())
+
+    // All PE share same ifm
+    for (idx <- 0 until nXbarInPE) {
+      pes(idx).io.idata := ibuf.io.toPG.ifm
+    }
 
   }
 }
